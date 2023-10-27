@@ -1,0 +1,10 @@
+cd Escritorio
+npm init vite@latest
+cd "nombreTuProyecto"
+npm install
+code .
+
+ABRIR MI APLICACION EN TERMINAL
+npm run dev
++
+Contol click
