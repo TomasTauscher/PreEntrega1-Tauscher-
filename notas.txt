@@ -8,3 +8,16 @@ ABRIR MI APLICACION EN TERMINAL
 npm run dev
 +
 Contol click
+
+git init
+git add .
+git commit -m "lo que quieras"
+git branch -M main
+git push
+
+
+USEEFFECT - cada vez que cambie el nombre se realizará el console.log
+let nombre = "coder"
+useEffect(()=>{
+    console.log("Efecto ejecutado")
+},[nombre])
