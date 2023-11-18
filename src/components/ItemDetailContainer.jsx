@@ -52,26 +52,6 @@ const ItemDetailContainer = () => {
     }, [id])
     console.log(productos)
     
-/*     useEffect(() => {
-        const getProductos = new Promise((resolve, reject) => {
-            if (products.length > 0) {
-                setTimeout(() => {
-                    resolve("Hay datos", setProductos(products));
-                }, 2000);
-            } else {
-                reject(new Error("No hay datos"));
-            }
-        });
-        
-        getProductos
-            .then((res) => {
-                console.log(res);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    }, [id]); */
-    
     const filteredProducts = id ? productos.filter((producto) => producto.id === parseInt(id)) : productos;
 
 

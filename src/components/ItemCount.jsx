@@ -16,7 +16,6 @@ const ItemCount = () => {
         })
     }
     const decrement = () => {
-        // Asegúrate de que el contador no sea menor que 0 antes de restar
         setCount((prevCount) => Math.max(prevCount - 1, 0));
     };
     return (
