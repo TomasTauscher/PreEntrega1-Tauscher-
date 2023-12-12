@@ -1,33 +1,72 @@
-import { useParams } from 'react-router-dom';
-import React from 'react';
-import { Card, CardHeader, CardBody, CardFooter, Heading, Text, ButtonGroup, Button } from '@chakra-ui/react';
+/* import React from 'react';
+import { Card, CardHeader, CardBody, CardFooter, Heading, Text } from '@chakra-ui/react';
 import ItemCount from './ItemCount'
 
-const ItemDetail = ({ productos }) => {
-    const { id } = useParams();
-    const dato = productos.find((p) => p.id === parseInt(id));
+const ItemDetail = ({ dato, id }) => {
 
-    if (!dato) {
-        return <div>No se encontró el producto con ID {id}</div>;
-    }
+    const ola = dato
+    const idObtenido = id
+    console.log(ola)
+    console.log(idObtenido)
+    console.log(ola.Stock)
+    return (
+        
+
+        
+        <div style={{ display: 'flex', justifyContent: 'center', height: '100vh', marginTop: '50px' }}>
+            <Card style={{ width: '350px', height: '450px' }}>
+                <CardHeader style={{ backgroundColor: 'lightslategray', padding: '10px', borderRadius: '10px' }}>
+                    <Heading size='md'>{ola[0]?.Nombre}</Heading>
+                </CardHeader>
+                <CardBody>
+                    <img
+                        src={ola[0]?.Imagen}
+                        alt={ola[0]?.Nombre}
+                        style={{ maxWidth: '300px', height: 'auto', border: '2px solid #ccc', borderRadius: '10px' }}
+                    />
+                    <Text style={{ fontFamily: 'Arial', fontSize: '16px', color: '#666' }}>{ola[0]?.Descripcion}</Text>
+                    <Text style={{ fontFamily: 'Verdana', fontSize: '14px', color: '#777' }}>{ola[0]?.Categoria}</Text>
+                </CardBody>
+
+                <CardFooter style={{ backgroundColor: 'lightgray', padding: '10px', borderRadius: "10px" }}>
+                <ItemCount stock={ola.Stock} />
+                </CardFooter>
+            </Card>
+            </div>
+    );
+};
+
+export default ItemDetail; */
+
+
+import React from 'react';
+import { Card, CardHeader, CardBody, CardFooter, Heading, Text } from '@chakra-ui/react';
+import ItemCount from './ItemCount';
+
+const ItemDetail = ({ dato, id }) => {
+    const ola = dato;
+    const idObtenido = id;
+
+    console.log(ola);
+    console.log(idObtenido);
 
     return (
         <div style={{ display: 'flex', justifyContent: 'center', height: '100vh', marginTop: '50px' }}>
             <Card style={{ width: '350px', height: '450px' }}>
                 <CardHeader style={{ backgroundColor: 'lightslategray', padding: '10px', borderRadius: '10px' }}>
-                    <Heading size='md'>{dato.nombre}</Heading>
+                    <Heading size='md'>{ola[0]?.Nombre}</Heading>
                 </CardHeader>
                 <CardBody>
                     <img
-                        src={dato.image}
-                        alt={dato.nombre}
+                        src={ola[0]?.Imagen}
+                        alt={ola[0]?.Nombre}
                         style={{ maxWidth: '300px', height: 'auto', border: '2px solid #ccc', borderRadius: '10px' }}
                     />
-                    <Text style={{ fontFamily: 'Arial', fontSize: '16px', color: '#666' }}>{dato.description}</Text>
-                    <Text style={{ fontFamily: 'Verdana', fontSize: '14px', color: '#777' }}>{dato.category}</Text>
+                    <Text style={{ fontFamily: 'Arial', fontSize: '16px', color: '#666' }}>{ola[0]?.Descripcion}</Text>
+                    <Text style={{ fontFamily: 'Verdana', fontSize: '14px', color: '#777' }}>{ola[0]?.Categoria}</Text>
                 </CardBody>
-                <CardFooter style={{ backgroundColor: 'lightgray', padding: '10px', borderRadius: "10px" }}>
-                    <ItemCount />
+                <CardFooter style={{ backgroundColor: 'lightgray', padding: '10px', borderRadius: '10px' }}>
+                    <ItemCount stock={ola[0]?.Stock} />
                 </CardFooter>
             </Card>
         </div>
@@ -35,5 +74,3 @@ const ItemDetail = ({ productos }) => {
 };
 
 export default ItemDetail;
-
-
