@@ -8,7 +8,6 @@ const ItemDetailContainer = () => {
     const [producto, setProducto] = useState([]);
     const [idActualizar, setIdActualizar] = useState('');
     const idString = id.toString();
-    console.log(idString);
 
     useEffect(() => {
         const fetchData = async () => {

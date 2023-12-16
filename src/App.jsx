@@ -6,8 +6,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './components/Navbar/Home'
 import About from './components/Navbar/About'
 import Contact from './components/Navbar/Contact'
-import Cart from './components/Navbar/Cart'
-import { CartProvider } from './context/CartContext';
+import Cart from './components/Navbar/Cart';
+import { CarritoProvider } from './context/CarritoContext';
 
 
 const App = () =>{
@@ -15,7 +15,7 @@ const App = () =>{
 
   return (
     <BrowserRouter>
-      <CartProvider>
+      <CarritoProvider>
       <NavBar />
 
       <Routes>
@@ -31,8 +31,7 @@ const App = () =>{
 
 
       </Routes>
-
-      </CartProvider>
+      </CarritoProvider>
       </BrowserRouter>
   )
 }

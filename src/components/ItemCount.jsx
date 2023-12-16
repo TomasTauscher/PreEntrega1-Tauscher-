@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import { Button, Badge, useToast } from '@chakra-ui/react';
+import { useCarrito } from '../context/CarritoContext';
+import { doc,  getFirestore,getDoc, updateDoc} from "firebase/firestore"
 
-const ItemCount = ({ stock }) => {
+const ItemCount = ({ stock, idProducto }) => {
     const toast = useToast();
     const [count, setCount] = useState(1);
+    const { carrito, setCarrito } = useCarrito();
+    const id = idProducto
 
     const addToCart = () => {
         toast({
@@ -13,7 +17,17 @@ const ItemCount = ({ stock }) => {
             duration: 5000,
             isClosable: true,
         });
-    };
+        const db = getFirestore()
+        const orderDoc = doc(db, "Cabañas", id)
+        getDoc(orderDoc).then((snapshot)=>{
+            let productoRepetido = false;
+            const documento = snapshot.data()
+            const productos = {idCodificado: id, nombreProducto: `${documento.Nombre}`, precioUnidad: `${documento.Precio}`,cantidad: count, precio: documento.Precio * count};
+            setCarrito(producto => [...producto, productos]);
+        })
+    }
+
+
 
     const decrement = () => {
         setCount((prevCount) => Math.max(prevCount - 1, 1));
@@ -23,8 +37,6 @@ const ItemCount = ({ stock }) => {
         setCount((prevCount) => Math.min(prevCount + 1, stock));
     };
 
-    console.log("Tipo de stock:", typeof stock);
-    console.log("Valor de stock:", stock);
 
     return (
         <div>
